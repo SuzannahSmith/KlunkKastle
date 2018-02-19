@@ -7,6 +7,8 @@ public class BodyController : MonoBehaviour {
 	private Rigidbody rb;
 	public float speed;
 
+	// public Camera maincamera;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -21,15 +23,15 @@ public class BodyController : MonoBehaviour {
 	void FixedUpdate ()
 	{
 			// Set some local float variables equal to the value of our Horizontal and Vertical Inputs
-			float moveHorizontal = Input.GetAxis ("Horizontal");
-			float moveVertical = Input.GetAxis ("Vertical");
+			float moveHorizontal = Input.GetAxis ("MovementHorizontal");
+			float moveVertical = Input.GetAxis ("MovementVertical");
 
-			// Create a Vector3 variable, and assign X and Z to feature our horizontal and vertical float variables above
-			Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-			// Debug.Log(movement);
+			Vector3 movementDirection = Vector3.zero;
+			movementDirection += moveVertical*Camera.main.transform.forward;
+			movementDirection += moveHorizontal*Camera.main.transform.right;
 
 			// Add a physical force to our Player rigidbody using our 'movement' Vector3 above,
 			// multiplying it by 'speed' - our public player speed that appears in the inspector
-			rb.AddForce (movement * speed, ForceMode.Acceleration);
+			rb.AddForce (movementDirection * speed, ForceMode.Acceleration);
 	}
 }

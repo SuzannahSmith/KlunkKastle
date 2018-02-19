@@ -13,8 +13,8 @@ public class TipBackHead : MonoBehaviour {
 	void FixedUpdate ()
 	{
 
-			float moveHorizontal = Math.Abs(Input.GetAxis ("Horizontal"));
-			float moveVertical = Math.Abs(Input.GetAxis ("Vertical"));
+			float moveHorizontal = Math.Abs(Input.GetAxis ("MovementHorizontal"));
+			float moveVertical = Math.Abs(Input.GetAxis ("MovementVertical"));
 
 			float movement = (moveVertical + moveHorizontal)/2;
 

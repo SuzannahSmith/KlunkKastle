@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A513BC8D-6A7D-D6C5-EEBE-D27CF600D276}</ProjectGuid>
+    <ProjectGuid>{1AF65FD1-BC85-ADE4-BA41-2AE8138D254D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -51,11 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BodyController.cs" />
+     <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\FollowObject.cs" />
-     <Compile Include="Assets\Scripts\GlorbieController.cs" />
+     <Compile Include="Assets\Scripts\Glorbie Controls\BodyController.cs" />
+     <Compile Include="Assets\Scripts\Glorbie Controls\GlorbieController.cs" />
+     <Compile Include="Assets\Scripts\Glorbie Controls\TipBackHead.cs" />
      <Compile Include="Assets\Scripts\LookAtObject.cs" />
-     <Compile Include="Assets\Scripts\TipBackHead.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/opt/fcs/local/software/unity/unity-editor-2017.2.0xb6Linux/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
