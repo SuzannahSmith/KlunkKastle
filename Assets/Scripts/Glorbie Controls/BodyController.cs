@@ -26,9 +26,12 @@ public class BodyController : MonoBehaviour {
 			float moveHorizontal = Input.GetAxis ("MovementHorizontal");
 			float moveVertical = Input.GetAxis ("MovementVertical");
 
+			Vector3 cameraForward = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
+			Vector3 cameraRight = Vector3.ProjectOnPlane(Camera.main.transform.right, Vector3.up);
+			
 			Vector3 movementDirection = Vector3.zero;
-			movementDirection += moveVertical*Camera.main.transform.forward;
-			movementDirection += moveHorizontal*Camera.main.transform.right;
+			movementDirection += moveVertical*Vector3.Normalize(cameraForward);
+			movementDirection += moveHorizontal*Vector3.Normalize(cameraRight);
 
 			// Add a physical force to our Player rigidbody using our 'movement' Vector3 above,
 			// multiplying it by 'speed' - our public player speed that appears in the inspector

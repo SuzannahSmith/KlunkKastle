@@ -13,6 +13,7 @@ ModelImporter:
     100010: Mouth
     100012: Right Hand
     100014: RightEye
+    100016: Body copy
     400000: Body
     400002: //RootNode
     400004: Head
@@ -21,6 +22,7 @@ ModelImporter:
     400010: Mouth
     400012: Right Hand
     400014: RightEye
+    400016: Body copy
     2100000: No Name
     2300000: Body
     2300002: Head
@@ -29,6 +31,7 @@ ModelImporter:
     2300008: Mouth
     2300010: Right Hand
     2300012: RightEye
+    2300014: Body copy
     3300000: Body
     3300002: Head
     3300004: Left Hand
@@ -36,6 +39,7 @@ ModelImporter:
     3300008: Mouth
     3300010: Right Hand
     3300012: RightEye
+    3300014: Body copy
     4300000: Body
     4300002: RightEye
     4300004: LeftEye
@@ -43,6 +47,7 @@ ModelImporter:
     4300008: Head
     4300010: Left Hand
     4300012: Right Hand
+    4300014: Body copy
     9500000: //RootNode
   externalObjects: {}
   materials:

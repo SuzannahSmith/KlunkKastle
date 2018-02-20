@@ -20,11 +20,13 @@ public class TipBackHead : MonoBehaviour {
 
 			Quaternion lookRotation;
 			if(bodyRb.velocity != Vector3.zero) {
-				lookRotation = Quaternion.LookRotation(bodyRb.velocity);
+				 lookRotation = Quaternion.LookRotation(bodyRb.velocity);
 			}
 			else {
-				lookRotation = Quaternion.LookRotation(bodyRb.transform.forward);
+				Vector3 cameraAngle = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
+				 lookRotation = Quaternion.LookRotation(cameraAngle);
 			}
+			// lookRotation = Quaternion.LookRotation(cameraAngle);
 
 			Quaternion tipRotation = Quaternion.AngleAxis(tipAngle*movement, Vector3.right);
 
