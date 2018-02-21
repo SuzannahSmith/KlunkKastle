@@ -10,8 +10,10 @@ public class CameraController : MonoBehaviour {
 	public Transform glorbieHead;
 	private Vector3 offset;
 
-	private float ANGLE_LIMIT = 50.0f;
-	private float MOUSE_LIMIT = 0.2f;
+	private float VERTICLE_DOWN_ANGLE_LIMIT = 40.0f;
+	private float VERTICLE_UP_ANGLE_LIMIT = -20.0f;
+	private float VERTICLE_MOUSE_LIMIT = 0.4f;
+	private float HORIZONTAL_MOUSE_LIMIT = 0.2f;
 	public int speed = 50;
 
 	private float verticalAngle;
@@ -31,20 +33,28 @@ public class CameraController : MonoBehaviour {
 		transform.position = glorbieBody.position - offset;
 
 		Vector3 mousePos = Input.mousePosition;
-		float turnHorizontal  = (mousePos.x/Screen.width*2)-1;
-		float turnVertical  = -1*((mousePos.y/Screen.height*2)-1);
+		float turnHorizontal  = GetHorizontalMouseAxis();
+		float turnVertical  = GetVerticalMouseAxis();
+		// float turnHorizontal  = Input.GetAxis("Mouse X");
+		// float turnVertical  = Input.GetAxis("Mouse Y");
 		// float turnHorizontal = Input.GetAxis ("CameraHorizontal");
 		// float turnVertical = Input.GetAxis ("CameraVertical");
 
+		// Debug.Log(turnHorizontal + " " + turnVertical);
+
 		//Rotate Camera around glorbie, so that he can turn and see in every direction
-		if(Math.Abs(turnHorizontal) > MOUSE_LIMIT) {
+		if(Math.Abs(turnHorizontal) > HORIZONTAL_MOUSE_LIMIT) {
 			horizontalAngle += speed * Time.deltaTime * turnHorizontal;
 			transform.RotateAround(glorbieBody.position, Vector3.up, speed * Time.deltaTime * turnHorizontal);
 		}
-		if(Math.Abs(turnVertical) > MOUSE_LIMIT && CheckValidAngle(verticalAngle, turnVertical)) {
+		if(Math.Abs(turnVertical) > VERTICLE_MOUSE_LIMIT && CheckValidAngle(verticalAngle, turnVertical)) {
 			verticalAngle += speed * Time.deltaTime * turnVertical;
 			transform.RotateAround(glorbieBody.position, transform.right, speed * Time.deltaTime * turnVertical);
 		}
+		// if(turnVertical == 0 && turnHorizontal == 0) {
+		// 	Cursor.lockState = CursorLockMode.Locked;
+    //   Cursor.lockState = CursorLockMode.None;
+		// }
 
 		// SnapCameraBack();
 
@@ -96,9 +106,22 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private bool CheckValidAngle(float angle, float direction) {
-		return ((angle < ANGLE_LIMIT) && (angle > -1*ANGLE_LIMIT))
-				|| ((angle <= -1*ANGLE_LIMIT) && direction > 0)
-				|| ((angle >= ANGLE_LIMIT) && direction < 0);
+		Debug.Log("Angle: " + angle);
+		Debug.Log("Turn value: " + direction);
+		Debug.Log("Down Limit: " + VERTICLE_DOWN_ANGLE_LIMIT);
+		Debug.Log("Up Limit: " + VERTICLE_UP_ANGLE_LIMIT);
+
+		return ((angle < VERTICLE_DOWN_ANGLE_LIMIT) && (angle > VERTICLE_UP_ANGLE_LIMIT))
+				|| ((angle <= VERTICLE_UP_ANGLE_LIMIT) && direction > 0)
+				|| ((angle >= VERTICLE_DOWN_ANGLE_LIMIT) && direction < 0);
+	}
+
+	private float GetHorizontalMouseAxis() {
+		return (Input.mousePosition.x/Screen.width*2) -1;
+	}
+
+	private float GetVerticalMouseAxis() {
+		return (Input.mousePosition.y/Screen.height*2) -1;
 	}
 
 }
