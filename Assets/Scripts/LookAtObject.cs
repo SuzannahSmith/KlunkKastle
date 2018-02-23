@@ -6,7 +6,6 @@ public class LookAtObject : MonoBehaviour {
 
 	public Transform lookAtObject;
 
-	// Update is called once per frame
 	void Update () {
 		transform.LookAt(lookAtObject.position);
 	}

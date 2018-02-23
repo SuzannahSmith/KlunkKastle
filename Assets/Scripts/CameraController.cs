@@ -6,7 +6,6 @@ using System;
 public class CameraController : MonoBehaviour {
 
 	public Transform glorbieBody;
-	public Rigidbody glorbieRb;
 	public Transform glorbieHead;
 	private Vector3 offset;
 
@@ -37,10 +36,6 @@ public class CameraController : MonoBehaviour {
 		float turnVertical  = GetVerticalMouseAxis();
 		// float turnHorizontal  = Input.GetAxis("Mouse X");
 		// float turnVertical  = Input.GetAxis("Mouse Y");
-		// float turnHorizontal = Input.GetAxis ("CameraHorizontal");
-		// float turnVertical = Input.GetAxis ("CameraVertical");
-
-		// Debug.Log(turnHorizontal + " " + turnVertical);
 
 		//Rotate Camera around glorbie, so that he can turn and see in every direction
 		if(Math.Abs(turnHorizontal) > HORIZONTAL_MOUSE_LIMIT) {
@@ -51,20 +46,15 @@ public class CameraController : MonoBehaviour {
 			verticalAngle += speed * Time.deltaTime * turnVertical;
 			transform.RotateAround(glorbieBody.position, transform.right, speed * Time.deltaTime * turnVertical);
 		}
-		// if(turnVertical == 0 && turnHorizontal == 0) {
-		// 	Cursor.lockState = CursorLockMode.Locked;
-    //   Cursor.lockState = CursorLockMode.None;
-		// }
 
-		// SnapCameraBack();
+		//  SnapCameraBack();
 
 		offset = glorbieBody.position - transform.position;
 	}
 
 	private void SnapCameraBack() {
 
-		float turnHorizontal = Input.GetAxis ("CameraHorizontal");
-		float turnVertical = Input.GetAxis ("CameraVertical");
+		float turnVertical  = GetVerticalMouseAxis();
 
 		// if(turnHorizontal == 0) {
 		// 	float step = 20*Time.deltaTime;
@@ -88,7 +78,7 @@ public class CameraController : MonoBehaviour {
 		// }
 
 		//If user lets go of up or down button, the camera angle will return to normal.
-		if(turnVertical == 0) {
+		if(turnVertical < 0.2f) {
 			float step = speed*Time.deltaTime;
 			if(Math.Abs(verticalAngle) - step < 0) {
 				verticalAngle = 0;
@@ -106,11 +96,6 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private bool CheckValidAngle(float angle, float direction) {
-		Debug.Log("Angle: " + angle);
-		Debug.Log("Turn value: " + direction);
-		Debug.Log("Down Limit: " + VERTICLE_DOWN_ANGLE_LIMIT);
-		Debug.Log("Up Limit: " + VERTICLE_UP_ANGLE_LIMIT);
-
 		return ((angle < VERTICLE_DOWN_ANGLE_LIMIT) && (angle > VERTICLE_UP_ANGLE_LIMIT))
 				|| ((angle <= VERTICLE_UP_ANGLE_LIMIT) && direction > 0)
 				|| ((angle >= VERTICLE_DOWN_ANGLE_LIMIT) && direction < 0);
