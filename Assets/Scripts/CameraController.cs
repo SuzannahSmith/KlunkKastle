@@ -9,8 +9,8 @@ public class CameraController : MonoBehaviour {
 	public Transform glorbieHead;
 	private Vector3 offset;
 
-	private float VERTICLE_DOWN_ANGLE_LIMIT = 40.0f;
-	private float VERTICLE_UP_ANGLE_LIMIT = -20.0f;
+	private float VERTICLE_UPPER_ANGLE_LIMIT = 40.0f;
+	private float VERTICLE_LOWER_ANGLE_LIMIT = -20.0f;
 	private float VERTICLE_MOUSE_LIMIT = 0.4f;
 	private float HORIZONTAL_MOUSE_LIMIT = 0.2f;
 	public int speed = 50;
@@ -31,30 +31,32 @@ public class CameraController : MonoBehaviour {
 	void Update () {
 		transform.position = glorbieBody.position - offset;
 
-		Vector3 mousePos = Input.mousePosition;
-		float turnHorizontal  = GetHorizontalMouseAxis();
-		float turnVertical  = GetVerticalMouseAxis();
-		// float turnHorizontal  = Input.GetAxis("Mouse X");
-		// float turnVertical  = Input.GetAxis("Mouse Y");
+		float turnHorizontal  = Input.GetAxis("Mouse X");
+		float turnVertical  = Input.GetAxis("Mouse Y");
 
 		//Rotate Camera around glorbie, so that he can turn and see in every direction
-		if(Math.Abs(turnHorizontal) > HORIZONTAL_MOUSE_LIMIT) {
-			horizontalAngle += speed * Time.deltaTime * turnHorizontal;
-			transform.RotateAround(glorbieBody.position, Vector3.up, speed * Time.deltaTime * turnHorizontal);
+		if(Math.Abs(turnHorizontal) > HORIZONTAL_MOUSE_LIMIT &&
+		   Input.GetMouseButton(0)) {
+
+			float step = -1 * speed * Time.deltaTime * turnHorizontal;
+			horizontalAngle += step;
+			transform.RotateAround(glorbieBody.position, Vector3.up, step);
 		}
-		if(Math.Abs(turnVertical) > VERTICLE_MOUSE_LIMIT && CheckValidAngle(verticalAngle, turnVertical)) {
-			verticalAngle += speed * Time.deltaTime * turnVertical;
-			transform.RotateAround(glorbieBody.position, transform.right, speed * Time.deltaTime * turnVertical);
+		if(Math.Abs(turnVertical) > VERTICLE_MOUSE_LIMIT &&
+		   CheckValidAngle(verticalAngle, turnVertical) &&
+			 Input.GetMouseButton(0)) {
+
+			float step = speed * Time.deltaTime * turnVertical;
+			verticalAngle += step;
+			transform.RotateAround(glorbieBody.position, transform.right, step);
 		}
 
-		//  SnapCameraBack();
+		 SnapCameraBack();
 
 		offset = glorbieBody.position - transform.position;
 	}
 
 	private void SnapCameraBack() {
-
-		float turnVertical  = GetVerticalMouseAxis();
 
 		// if(turnHorizontal == 0) {
 		// 	float step = 20*Time.deltaTime;
@@ -78,7 +80,7 @@ public class CameraController : MonoBehaviour {
 		// }
 
 		//If user lets go of up or down button, the camera angle will return to normal.
-		if(turnVertical < 0.2f) {
+		if(!Input.GetMouseButton(0)) {
 			float step = speed*Time.deltaTime;
 			if(Math.Abs(verticalAngle) - step < 0) {
 				verticalAngle = 0;
@@ -96,9 +98,9 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private bool CheckValidAngle(float angle, float direction) {
-		return ((angle < VERTICLE_DOWN_ANGLE_LIMIT) && (angle > VERTICLE_UP_ANGLE_LIMIT))
-				|| ((angle <= VERTICLE_UP_ANGLE_LIMIT) && direction > 0)
-				|| ((angle >= VERTICLE_DOWN_ANGLE_LIMIT) && direction < 0);
+		return ((angle > VERTICLE_LOWER_ANGLE_LIMIT) && (angle < VERTICLE_UPPER_ANGLE_LIMIT))
+				|| ((angle >= VERTICLE_UPPER_ANGLE_LIMIT) && direction < 0)
+				|| ((angle <= VERTICLE_LOWER_ANGLE_LIMIT) && direction > 0);
 	}
 
 	private float GetHorizontalMouseAxis() {

@@ -7,16 +7,8 @@ public class GlorbieMovementController : MonoBehaviour {
 	private Rigidbody rb;
 	public float speed;
 
-	// public Camera maincamera;
-
-	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
-	}
-
-	// Update is called once per frame
-	void Update () {
-
 	}
 
 	// Each physics ..
@@ -28,7 +20,7 @@ public class GlorbieMovementController : MonoBehaviour {
 
 			Vector3 cameraForward = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
 			Vector3 cameraRight = Vector3.ProjectOnPlane(Camera.main.transform.right, Vector3.up);
-			
+
 			Vector3 movementDirection = Vector3.zero;
 			movementDirection += moveVertical*Vector3.Normalize(cameraForward);
 			movementDirection += moveHorizontal*Vector3.Normalize(cameraRight);

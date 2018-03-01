@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.3587272, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2822,6 +2822,28 @@ Transform:
   m_PrefabParentObject: {fileID: 4968979385776692, guid: e42024c7374ba4829a83816d053f0071,
     type: 2}
   m_PrefabInternal: {fileID: 885365075}
+--- !u!1 &1833229037 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1566910265268570, guid: b1f08aa5806084757ab9b583093f0df0,
+    type: 2}
+  m_PrefabInternal: {fileID: 954251898}
+--- !u!143 &1833229043
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1833229037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.9222623
+  m_Radius: 0.49320138
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1867386014
 Prefab:
   m_ObjectHideFlags: 0

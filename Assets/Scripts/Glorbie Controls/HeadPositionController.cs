@@ -9,7 +9,7 @@ public class HeadPositionController : MonoBehaviour {
 
 	private float tipAngle = -50.0f;
 
-	void FixedUpdate ()
+	void LateUpdate ()
 	{
 
 			float moveHorizontal = Math.Abs(Input.GetAxis ("MovementHorizontal"));
