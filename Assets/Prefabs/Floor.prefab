@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23081550628835854}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,9 +35,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1026667361736116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.31, y: -17.2, z: 59.23}
-  m_LocalScale: {x: 4.9405375, y: 0.9999994, z: 12.530526}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 49.69, y: -107.2, z: 236.4}
+  m_LocalScale: {x: 28.827131, y: 1, z: 41.977844}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

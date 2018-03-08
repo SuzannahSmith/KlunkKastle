@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GlorbieController : MonoBehaviour {
 
-	public float speed;
-
 	// Use this for initialization
 	void Start () {
 	}
@@ -15,5 +13,10 @@ public class GlorbieController : MonoBehaviour {
 
 	}
 
-
+	void OnCollisionEnter(Collision collision){
+		tag = collision.gameObject.tag;
+		if (tag == "Enemy" || tag == "Obstacle"){
+			GameController.handleFatalCollision(gameObject.transform.parent.gameObject);
+		}
+	}
 }
