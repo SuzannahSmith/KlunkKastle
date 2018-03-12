@@ -7,10 +7,15 @@ public class KlunkController : MonoBehaviour {
 
 	public Transform target;
 	private NavMeshAgent agent;
+	public bool move;
+	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
+		anim = GetComponent<Animator>();
+		agent.updatePosition = false;
+
 		setAgentEnabled(false);
 	}
 
@@ -22,5 +27,10 @@ public class KlunkController : MonoBehaviour {
 
 	public void setAgentEnabled(bool b){
 		agent.enabled = b;
+		// anim.SetBool("move", b);
+	}
+
+	void OnAnimatorMove(){
+   	transform.position = agent.nextPosition;
 	}
 }
