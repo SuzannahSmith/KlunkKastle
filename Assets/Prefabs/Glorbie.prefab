@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4134826355423610}
   - component: {fileID: 108684874614939432}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BackLight
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4728512017036932}
   - component: {fileID: 114773900278093284}
   - component: {fileID: 114990430745310278}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RestOfGlorbie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4368076748757486}
   - component: {fileID: 33151144740176364}
   - component: {fileID: 23176063213832368}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,9 @@ GameObject:
   - component: {fileID: 54862282959767446}
   - component: {fileID: 135608631725790548}
   - component: {fileID: 114633445211813642}
-  m_Layer: 0
+  - component: {fileID: 143589161463111918}
+  - component: {fileID: 114028978522555686}
+  m_Layer: 2
   m_Name: GlorbieBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +93,7 @@ GameObject:
   - component: {fileID: 4320737167351806}
   - component: {fileID: 33003418333290982}
   - component: {fileID: 23835180026325894}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +129,7 @@ GameObject:
   - component: {fileID: 4573660422860634}
   - component: {fileID: 33948131219713178}
   - component: {fileID: 23357103615222878}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +146,7 @@ GameObject:
   - component: {fileID: 4107163100769792}
   - component: {fileID: 33988323945315414}
   - component: {fileID: 23673391718505528}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Right Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +163,7 @@ GameObject:
   - component: {fileID: 4496646812085728}
   - component: {fileID: 33876475133863692}
   - component: {fileID: 23045353237332570}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +180,7 @@ GameObject:
   - component: {fileID: 4272194438079756}
   - component: {fileID: 33348184435947742}
   - component: {fileID: 23919834002616088}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +347,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910036202073168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.575, z: 3.577}
+  m_LocalPosition: {x: 0, y: 2.16, z: 4.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4280352309664720}
@@ -709,7 +711,7 @@ Animator:
   m_GameObject: {fileID: 1910036202073168}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5dce952ab28474f85ac0c1d9c291d183, type: 3}
-  m_Controller: {fileID: 9100000, guid: 13d1bfeb7e5104a11988e49326bdf1ca, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -742,7 +744,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -753,6 +755,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114028978522555686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566910265268570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f889ca528d374fada819282e3f7baf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114633445211813642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -821,4 +834,21 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.49320138
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &143589161463111918
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566910265268570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.9222623
+  m_Radius: 0.49320138
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}

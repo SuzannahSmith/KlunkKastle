@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public static void handleFatalCollision(GameObject glorbie){
+		//Detach main camera from Glorbie so that it isn't disabled when player dies.
 		GameObject mainCamera = GameObject.FindWithTag("MainCamera");
 		mainCamera.transform.parent = null;
 

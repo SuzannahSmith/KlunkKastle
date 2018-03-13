@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour {
 	private float VERTICLE_LOWER_ANGLE_LIMIT = -20.0f;
 	private float VERTICLE_MOUSE_LIMIT = 0.4f;
 	private float HORIZONTAL_MOUSE_LIMIT = 0.2f;
-	public int speed = 50;
+	public float resetSpeed = 40f;
 
 	private float verticalAngle;
 	private float horizontalAngle;
@@ -38,15 +38,17 @@ public class CameraController : MonoBehaviour {
 		if(Math.Abs(turnHorizontal) > HORIZONTAL_MOUSE_LIMIT &&
 		   Input.GetMouseButton(0)) {
 
-			float step = -1 * speed * Time.deltaTime * turnHorizontal;
+			float step = -1 * turnHorizontal;
 			horizontalAngle += step;
+			Debug.Log("horiz" + step);
 			transform.RotateAround(glorbieBody.position, Vector3.up, step);
 		}
 		if(Math.Abs(turnVertical) > VERTICLE_MOUSE_LIMIT &&
 		   CheckValidAngle(verticalAngle, turnVertical) &&
 			 Input.GetMouseButton(0)) {
 
-			float step = speed * Time.deltaTime * turnVertical;
+			float step = turnVertical;
+			Debug.Log("vertical" + step);
 			verticalAngle += step;
 			transform.RotateAround(glorbieBody.position, transform.right, step);
 		}
@@ -81,7 +83,7 @@ public class CameraController : MonoBehaviour {
 
 		//If user lets go of up or down button, the camera angle will return to normal.
 		if(!Input.GetMouseButton(0)) {
-			float step = speed*Time.deltaTime;
+			float step = resetSpeed*Time.deltaTime;
 			if(Math.Abs(verticalAngle) - step < 0) {
 				verticalAngle = 0;
 			}

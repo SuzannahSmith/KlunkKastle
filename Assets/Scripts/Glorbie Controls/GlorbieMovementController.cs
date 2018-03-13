@@ -14,19 +14,26 @@ public class GlorbieMovementController : MonoBehaviour {
 	// Each physics ..
 	void FixedUpdate ()
 	{
-			// Set some local float variables equal to the value of our Horizontal and Vertical Inputs
-			float moveHorizontal = Input.GetAxis ("MovementHorizontal");
-			float moveVertical = Input.GetAxis ("MovementVertical");
+			if(isGrounded()) {
 
-			Vector3 cameraForward = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
-			Vector3 cameraRight = Vector3.ProjectOnPlane(Camera.main.transform.right, Vector3.up);
+				// Set some local float variables equal to the value of our Horizontal and Vertical Inputs
+				float moveHorizontal = Input.GetAxis ("MovementHorizontal");
+				float moveVertical = Input.GetAxis ("MovementVertical");
 
-			Vector3 movementDirection = Vector3.zero;
-			movementDirection += moveVertical*Vector3.Normalize(cameraForward);
-			movementDirection += moveHorizontal*Vector3.Normalize(cameraRight);
+				Vector3 cameraForward = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
+				Vector3 cameraRight = Vector3.ProjectOnPlane(Camera.main.transform.right, Vector3.up);
 
-			// Add a physical force to our Player rigidbody using our 'movement' Vector3 above,
-			// multiplying it by 'speed' - our public player speed that appears in the inspector
-			rb.AddForce (movementDirection * speed, ForceMode.Acceleration);
+				Vector3 movementDirection = Vector3.zero;
+				movementDirection += moveVertical*Vector3.Normalize(cameraForward);
+				movementDirection += moveHorizontal*Vector3.Normalize(cameraRight);
+
+				// Add a physical force to our Player rigidbody using our 'movement' Vector3 above,
+				// multiplying it by 'speed' - our public player speed that appears in the inspector
+				rb.AddForce (movementDirection * speed, ForceMode.Acceleration);
+			}
+	}
+
+	bool isGrounded(){
+		return Physics.Raycast(transform.position, -Vector3.up, 0.52f);
 	}
 }
