@@ -6,6 +6,7 @@ public class GlorbieMovementController : MonoBehaviour {
 
 	private Rigidbody rb;
 	public float speed;
+	public float maxSpeed = 10f;
 
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -15,7 +16,6 @@ public class GlorbieMovementController : MonoBehaviour {
 	void FixedUpdate ()
 	{
 			if(isGrounded()) {
-
 				// Set some local float variables equal to the value of our Horizontal and Vertical Inputs
 				float moveHorizontal = Input.GetAxis ("MovementHorizontal");
 				float moveVertical = Input.GetAxis ("MovementVertical");
@@ -30,10 +30,20 @@ public class GlorbieMovementController : MonoBehaviour {
 				// Add a physical force to our Player rigidbody using our 'movement' Vector3 above,
 				// multiplying it by 'speed' - our public player speed that appears in the inspector
 				rb.AddForce (movementDirection * speed, ForceMode.Acceleration);
+
+				// LimitGlorbieSpeed();
 			}
+
+	}
+
+	void LimitRigidbodySpeed() {
+		// Trying to Limit Speed
+		if(rb.velocity.magnitude > maxSpeed){
+				rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+		}
 	}
 
 	bool isGrounded(){
-		return Physics.Raycast(transform.position, -Vector3.up, 0.52f);
+		return Physics.Raycast(transform.position, -Vector3.up, 0.53f);
 	}
 }

@@ -6,24 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-	public enum GameState {PLAY, LOSING, LOST};
-	public int currentLevel = 0;
+	public enum GameState {PLAY, LOSING, LOST, WINNING};
+	public static int currentLevel = 0;
+	public static int numLosses = 0;
 
 	public static GameState gameState = GameState.PLAY;
 	public Text loseText;
+	public Text lvlText;
+	public Text numLossesText;
 
 	private string[] levelNames = {"Level1", "Level2", "Level3", "Level4"};
 
 	// Use this for initialization
 	void Start () {
-
+		lvlText.text = "Level: " + (currentLevel + 1);
+		updateNumLossesText();
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-		if (gameState == GameController.GameState.LOSING){
+		if (gameState == GameState.LOSING){
 			loseGame();
+		}
+
+		if(gameState == GameState.WINNING) {
+			winLevel();
 		}
 
 		if (Input.GetKeyUp(KeyCode.R)){
@@ -38,18 +46,34 @@ public class GameController : MonoBehaviour {
 
 		glorbie.SetActive(false);
 
-		gameState = GameController.GameState.LOSING;
+		gameState = GameState.LOSING;
+	}
+
+	public static void handleLevelWin() {
+		gameState = GameState.WINNING;
+	}
+
+	void winLevel() {
+		currentLevel++;
+		gameState = GameState.PLAY;
+		SceneManager.LoadScene(levelNames[currentLevel]);
 	}
 
 	void loseGame(){
+		numLosses++;
+		updateNumLossesText();
 		loseText.text = "You lose! Press 'R' to restart!";
-		gameState = GameController.GameState.LOST;
+		gameState = GameState.LOST;
 	}
 
 	void restartGame(){
-		gameState = GameController.GameState.PLAY;
+		gameState = GameState.PLAY;
 		SceneManager.LoadScene(levelNames[currentLevel]);
 		loseText.enabled = false;
+	}
+
+	void updateNumLossesText() {
+		numLossesText.text = "# losses: " + numLosses;
 	}
 
 }

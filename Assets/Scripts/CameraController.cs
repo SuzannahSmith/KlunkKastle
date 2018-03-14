@@ -38,9 +38,8 @@ public class CameraController : MonoBehaviour {
 		if(Math.Abs(turnHorizontal) > HORIZONTAL_MOUSE_LIMIT &&
 		   Input.GetMouseButton(0)) {
 
-			float step = -1 * turnHorizontal;
+			float step = turnHorizontal;
 			horizontalAngle += step;
-			Debug.Log("horiz" + step);
 			transform.RotateAround(glorbieBody.position, Vector3.up, step);
 		}
 		if(Math.Abs(turnVertical) > VERTICLE_MOUSE_LIMIT &&
@@ -48,7 +47,6 @@ public class CameraController : MonoBehaviour {
 			 Input.GetMouseButton(0)) {
 
 			float step = turnVertical;
-			Debug.Log("vertical" + step);
 			verticalAngle += step;
 			transform.RotateAround(glorbieBody.position, transform.right, step);
 		}
