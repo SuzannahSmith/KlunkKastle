@@ -44,6 +44,6 @@ public class GlorbieMovementController : MonoBehaviour {
 	}
 
 	bool isGrounded(){
-		return Physics.Raycast(transform.position, -Vector3.up, 0.53f);
+		return Physics.Raycast(transform.position, -Vector3.up, 0.60f);
 	}
 }

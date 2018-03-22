@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114596638502653230}
   - component: {fileID: 195157962372364912}
   - component: {fileID: 95237460164922868}
+  - component: {fileID: 114284264563456126}
   m_Layer: 0
   m_Name: Klunk(Animated)
   m_TagString: Enemy
@@ -216,6 +217,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114284264563456126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1197622452537644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2119975c984bb4c2686ff5583281fe6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRandom: 1
+  animName: klunk_hop
+  offset: 0
 --- !u!114 &114596638502653230
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -111,4 +111,8 @@ public class CameraController : MonoBehaviour {
 		return (Input.mousePosition.y/Screen.height*2) -1;
 	}
 
+	public void ChangeCameraAngle(float angle) {
+		transform.RotateAround(glorbieBody.position, transform.right, angle);
+	}
+
 }

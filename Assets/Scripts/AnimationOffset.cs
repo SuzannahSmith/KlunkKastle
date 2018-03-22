@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class AnimationOffset : MonoBehaviour {
 
+	public bool isRandom;
+	public string animName;
+	public float offset;
+
 	void Start () {
 		Animator anim = GetComponent<Animator>();
-		anim.Play("hammer", -1, 0.5f);
+		if(isRandom) {
+			anim.Play(animName, -1, Random.Range(0.0f, 1f));
+		}
+		else {
+			anim.Play(animName, -1, offset);
+		}
 	}
 
 }

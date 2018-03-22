@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerController : MonoBehaviour {
+public class KlunkTriggerController : MonoBehaviour {
 
 	public List<KlunkController> klunkList;
 	public bool enableKlunks;

@@ -15,12 +15,33 @@ public class GameController : MonoBehaviour {
 	public Text lvlText;
 	public Text numLossesText;
 
+	public static Transform checkPoint;
+
+	public Transform glorbiePosition;
+
 	private string[] levelNames = {"Level1", "Level2", "Level3", "Level4"};
+
+	void Awake(){
+		DontDestroyOnLoad(GameObject.Find("StartingPoint"));
+	}
 
 	// Use this for initialization
 	void Start () {
+		for(int i = 0; i < 4; i++) {
+			if (levelNames[i] == SceneManager.GetActiveScene().name) {
+				currentLevel = i;
+			}
+		}
+
 		lvlText.text = "Level: " + (currentLevel + 1);
 		updateNumLossesText();
+
+		if(checkPoint == null) {
+			checkPoint = GameObject.Find("StartingPoint").transform;
+		}
+
+		glorbiePosition.position = new Vector3(checkPoint.position.x, checkPoint.position.y, checkPoint.position.z);
+		// glorbiePosition.eulerAngles = new Vector3(checkPoint.eulerAngles.x, checkPoint.eulerAngles.y, checkPoint.eulerAngles.z);
 	}
 
 	// Update is called once per frame
@@ -55,6 +76,7 @@ public class GameController : MonoBehaviour {
 
 	void winLevel() {
 		currentLevel++;
+		checkPoint = null;
 		gameState = GameState.PLAY;
 		SceneManager.LoadScene(levelNames[currentLevel]);
 	}
@@ -74,6 +96,11 @@ public class GameController : MonoBehaviour {
 
 	void updateNumLossesText() {
 		numLossesText.text = "# losses: " + numLosses;
+	}
+
+	public static void setCheckpoint(Transform newCP) {
+		checkPoint.position = new Vector3(newCP.position.x, newCP.position.y, newCP.position.z);
+		// checkPoint.eulerAngles = new Vector3(newCP.eulerAngles.x, newCP.eulerAngles.y, newCP.eulerAngles.z);
 	}
 
 }
