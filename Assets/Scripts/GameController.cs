@@ -16,13 +16,14 @@ public class GameController : MonoBehaviour {
 	public Text numLossesText;
 
 	public static Transform checkPoint;
+	public string startingPointName = "StartingPoint";
 
 	public Transform glorbiePosition;
 
 	private string[] levelNames = {"Level1", "Level2", "Level3", "Level4"};
 
 	void Awake(){
-		DontDestroyOnLoad(GameObject.Find("StartingPoint"));
+		DontDestroyOnLoad(GameObject.Find(startingPointName));
 	}
 
 	// Use this for initialization
@@ -37,7 +38,7 @@ public class GameController : MonoBehaviour {
 		updateNumLossesText();
 
 		if(checkPoint == null) {
-			checkPoint = GameObject.Find("StartingPoint").transform;
+			checkPoint = GameObject.Find(startingPointName).transform;
 		}
 
 		glorbiePosition.position = new Vector3(checkPoint.position.x, checkPoint.position.y, checkPoint.position.z);
