@@ -6,7 +6,6 @@ using System;
 public class CameraController : MonoBehaviour {
 
 	public Transform glorbieBody;
-	public Transform glorbieHead;
 	private Vector3 offset;
 
 	private float VERTICLE_UPPER_ANGLE_LIMIT = 40.0f;
@@ -17,6 +16,10 @@ public class CameraController : MonoBehaviour {
 
 	private float verticalAngle;
 	private float horizontalAngle;
+
+	private static float permanentOffsetCameraAngle;
+	private static float offsetToGo;
+	private static bool offsetNow;
 
 	// Use this for initialization
 	void Start () {
@@ -36,14 +39,13 @@ public class CameraController : MonoBehaviour {
 
 		//Rotate Camera around glorbie, so that he can turn and see in every direction
 		if(Math.Abs(turnHorizontal) > HORIZONTAL_MOUSE_LIMIT &&
-		   Input.GetMouseButton(0)) {
-
+			Input.GetMouseButton(0)) {
 			float step = turnHorizontal;
 			horizontalAngle += step;
 			transform.RotateAround(glorbieBody.position, Vector3.up, step);
 		}
 		if(Math.Abs(turnVertical) > VERTICLE_MOUSE_LIMIT &&
-		   CheckValidAngle(verticalAngle, turnVertical) &&
+			CheckValidAngle(verticalAngle, turnVertical) &&
 			 Input.GetMouseButton(0)) {
 
 			float step = turnVertical;
@@ -51,33 +53,14 @@ public class CameraController : MonoBehaviour {
 			transform.RotateAround(glorbieBody.position, transform.right, step);
 		}
 
-		 SnapCameraBack();
+		SnapCameraBack();
+
+		PermanentlyChangeCameraAngle ();
 
 		offset = glorbieBody.position - transform.position;
 	}
 
 	private void SnapCameraBack() {
-
-		// if(turnHorizontal == 0) {
-		// 	float step = 20*Time.deltaTime;
-		//
-		// 	//Get angle between direction that Glorbie is facing, and direction of camera.
-		// 	Vector3 headAngle = Vector3.ProjectOnPlane(glorbieHead.forward, Vector3.up);
-		// 	Vector3 cameraAngle = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
-		// 	float glorbieAngle = Vector3.SignedAngle(headAngle, cameraAngle, Vector3.up);
-		//
-		// 	if(Math.Abs(glorbieAngle) - step < 0) {
-		// 		glorbieAngle = 0;
-		// 	}
-		// 	else if (horizontalAngle > 0) {
-		// 		transform.RotateAround(glorbieBody.position, transform.up, -step);
-		// 		glorbieAngle -= step;
-		// 	}
-		// 	else {
-		// 		transform.RotateAround(glorbieBody.position, transform.up, step);
-		// 		glorbieAngle += step;
-		// 	}
-		// }
 
 		//If user lets go of up or down button, the camera angle will return to normal.
 		if(!Input.GetMouseButton(0)) {
@@ -94,7 +77,6 @@ public class CameraController : MonoBehaviour {
 				verticalAngle -= step;
 			}
 		}
-
 	}
 
 	private bool CheckValidAngle(float angle, float direction) {
@@ -103,16 +85,31 @@ public class CameraController : MonoBehaviour {
 				|| ((angle <= VERTICLE_LOWER_ANGLE_LIMIT) && direction > 0);
 	}
 
-	private float GetHorizontalMouseAxis() {
-		return (Input.mousePosition.x/Screen.width*2) -1;
+//	private float GetHorizontalMouseAxis() {
+//		return (Input.mousePosition.x/Screen.width*2) -1;
+//	}
+//
+//	private float GetVerticalMouseAxis() {
+//		return (Input.mousePosition.y/Screen.height*2) -1;
+//	}
+//
+	public static void InitAngleChange(float angle) {
+		permanentOffsetCameraAngle = angle;
+		offsetToGo = angle;
+		offsetNow = true;
 	}
 
-	private float GetVerticalMouseAxis() {
-		return (Input.mousePosition.y/Screen.height*2) -1;
-	}
+	public void PermanentlyChangeCameraAngle () { 
+		if (offsetNow) {
+			float step = permanentOffsetCameraAngle * Time.deltaTime;
+			transform.RotateAround (glorbieBody.position, transform.right, step);
 
-	public void ChangeCameraAngle(float angle) {
-		transform.RotateAround(glorbieBody.position, transform.right, angle);
+			offsetToGo -= step;
+			if (Math.Abs(offsetToGo) < 0.8f) {
+				offsetNow = false;
+				permanentOffsetCameraAngle = 0f;
+				offsetToGo = 0;
+			}
+		}
 	}
-
 }

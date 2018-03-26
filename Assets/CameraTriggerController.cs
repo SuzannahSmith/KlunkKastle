@@ -5,9 +5,12 @@ using UnityEngine;
 public class CameraTriggerController : MonoBehaviour {
 
 	public float angleOffset;
+	public bool active = true;
 
 	void OnTriggerEnter(Collider other) {
-		CameraController[] camControllers = other.gameObject.transform.parent.GetComponentsInChildren<CameraController>();
-		camControllers[0].ChangeCameraAngle(angleOffset);
+		if (active && other.gameObject.transform.parent.tag == "Player") {
+			CameraController.InitAngleChange (angleOffset);
+			active = false;
+		}
 	}
 }
