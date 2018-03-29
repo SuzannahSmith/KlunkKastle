@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ButtonActivated.cs" />
+     <Compile Include="Assets\ButtonController.cs" />
      <Compile Include="Assets\CameraTriggerController.cs" />
      <Compile Include="Assets\Scripts\AnimationOffset.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -65,6 +67,7 @@
      <Compile Include="Assets\Scripts\KlunkController.cs" />
      <Compile Include="Assets\Scripts\KlunkTriggerController.cs" />
      <Compile Include="Assets\Scripts\LookAtObject.cs" />
+     <Compile Include="Assets\SpikeBulletController.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/opt/fcs/local/software/unity/unity-editor-2017.2.0xb6Linux/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>

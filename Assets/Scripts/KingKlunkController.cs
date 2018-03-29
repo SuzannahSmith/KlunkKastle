@@ -4,33 +4,30 @@ using UnityEngine;
 
 public class KingKlunkController : MonoBehaviour {
 
-	float lastFired;
 	public GameObject spikeBullet;
+	private float reloadTime = 0.25f;
+
 	// Use this for initialization
 	void Start () {
-		lastFired = Time.time;
+
+		StartCoroutine(ShootBurst());
 	}
 
-	// Update is called once per frame
-	void Update () {
-		if (Time.time - lastFired > 3.0f){
-			fireProjectile();
-		}
+	public IEnumerator ShootBurst() {
+		fireProjectile(-20f);
+		yield return new WaitForSecondsRealtime(reloadTime);
+		fireProjectile(0);
+		yield return new WaitForSecondsRealtime(reloadTime);
+		fireProjectile(20f);
+		yield return new WaitForSecondsRealtime(3.0f);
+
+		StartCoroutine(ShootBurst());
 	}
 
-	void fireProjectile(){
-		Quaternion rotation = transform.rotation;
-		float rand = Random.Range(-25f, 25f);
-		rotation *= Quaternion.Euler(0, rand, 0);
-		GameObject b = Instantiate(spikeBullet, transform.position, rotation);
-
-		rand = Random.Range(-25f, 25f);
-		Quaternion rotation2 = transform.rotation;
-		rotation2 *= Quaternion.Euler(0, rand, 0);
-		GameObject b2 = Instantiate(spikeBullet, transform.position, rotation2);
-		//b.GetComponent<BulletController>().InitPosition(transform.position + offsetVector, new Vector3(0, 2f, 0), Quaternion.Euler(0, 0, 0));
+	void fireProjectile(float offsetAngle) {
+		Quaternion rotation = Quaternion.Euler(0, (transform.rotation.eulerAngles.y + offsetAngle), 0);
+		Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+		GameObject b = Instantiate(spikeBullet, bulletPosition, rotation);
 		b.GetComponent<Rigidbody>().velocity = b.transform.forward * 25;
-		b2.GetComponent<Rigidbody>().velocity = b2.transform.forward * 25;
-		lastFired = Time.time;
 	}
 }
