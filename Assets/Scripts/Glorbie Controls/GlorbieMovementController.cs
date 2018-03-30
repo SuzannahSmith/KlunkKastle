@@ -29,19 +29,22 @@ public class GlorbieMovementController : MonoBehaviour {
 
 				// Add a physical force to our Player rigidbody using our 'movement' Vector3 above,
 				// multiplying it by 'speed' - our public player speed that appears in the inspector
-				rb.AddForce (movementDirection * speed, ForceMode.Acceleration);
+			rb.AddForce (movementDirection * speed, ForceMode.Acceleration);
+//			float currentSpeed = speed * Time.fixedDeltaTime;
+//			Vector3 newVector = movementDirection * currentSpeed;
+//			Debug.Log (Time.fixedDeltaTime + " " + currentSpeed +" " + newVector + " " + (movementDirection * currentSpeed));
 
 				// LimitGlorbieSpeed();
 			}
 
 	}
 
-	void LimitRigidbodySpeed() {
-		// Trying to Limit Speed
-		if(rb.velocity.magnitude > maxSpeed){
-				rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-		}
-	}
+//	void LimitRigidbodySpeed() {
+//		// Trying to Limit Speed
+//		if(rb.velocity.magnitude > maxSpeed){
+//				rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+//		}
+//	}
 
 	bool isGrounded(){
 		return Physics.Raycast(transform.position, -Vector3.up, 0.60f);

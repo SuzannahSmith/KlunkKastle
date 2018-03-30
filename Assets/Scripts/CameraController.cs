@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour {
 
 	private float verticalAngle;
 	private float horizontalAngle;
+	private float turnSpeed = 5f;
 
 	private static float permanentOffsetCameraAngle;
 	private static float offsetToGo;
@@ -40,7 +41,7 @@ public class CameraController : MonoBehaviour {
 		//Rotate Camera around glorbie, so that he can turn and see in every direction
 		if(Math.Abs(turnHorizontal) > HORIZONTAL_MOUSE_LIMIT &&
 			Input.GetMouseButton(0)) {
-			float step = turnHorizontal;
+			float step = turnHorizontal*turnSpeed*Time.deltaTime;
 			horizontalAngle += step;
 			transform.RotateAround(glorbieBody.position, Vector3.up, step);
 		}
@@ -48,7 +49,7 @@ public class CameraController : MonoBehaviour {
 			CheckValidAngle(verticalAngle, turnVertical) &&
 			 Input.GetMouseButton(0)) {
 
-			float step = turnVertical;
+			float step = turnVertical*turnSpeed*Time.deltaTime;
 			verticalAngle += step;
 			transform.RotateAround(glorbieBody.position, transform.right, step);
 		}
@@ -105,7 +106,7 @@ public class CameraController : MonoBehaviour {
 			transform.RotateAround (glorbieBody.position, transform.right, step);
 
 			offsetToGo -= step;
-			if (Math.Abs(offsetToGo) < 0.8f) {
+			if (Math.Abs(offsetToGo) < 1.5f) {
 				offsetNow = false;
 				permanentOffsetCameraAngle = 0f;
 				offsetToGo = 0;

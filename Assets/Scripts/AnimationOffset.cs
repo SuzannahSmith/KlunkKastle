@@ -9,13 +9,17 @@ public class AnimationOffset : MonoBehaviour {
 	public float offset;
 
 	void Start () {
-		Animator anim = GetComponent<Animator>();
-		if(isRandom) {
-			anim.Play(animName, -1, Random.Range(0.0f, 1f));
-		}
-		else {
-			anim.Play(animName, -1, offset);
-		}
+		PlayOffsetAnimation ();
 	}
 
+	public void PlayOffsetAnimation() {
+		Animator anim = GetComponent<Animator>();
+		if (anim != null) {
+			if (isRandom) {
+				anim.Play (animName, -1, Random.Range (0.0f, 1f));
+			} else {
+				anim.Play (animName, -1, offset);
+			}
+		}
+	}
 }

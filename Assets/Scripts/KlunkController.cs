@@ -31,5 +31,6 @@ public class KlunkController : MonoBehaviour {
 	public void setAgentEnabled(bool b){
 		agent.enabled = b;
 		anim.SetBool("move", b);
+		GetComponent<AnimationOffset> ().PlayOffsetAnimation ();
 	}
 }

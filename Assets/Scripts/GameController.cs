@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour {
 
 	void winLevel() {
 		currentLevel++;
-		checkPoint = null;
+		Destroy (GameObject.Find(startingPointName));
 		gameState = GameState.PLAY;
 		SceneManager.LoadScene(levelNames[currentLevel]);
 	}
