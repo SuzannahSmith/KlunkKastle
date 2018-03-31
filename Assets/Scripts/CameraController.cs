@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
 
 	private float verticalAngle;
 	private float horizontalAngle;
-	private float turnSpeed = 5f;
+	private float turnSpeed = 8f;
 
 	private static float permanentOffsetCameraAngle;
 	private static float offsetToGo;
@@ -100,7 +100,7 @@ public class CameraController : MonoBehaviour {
 		offsetNow = true;
 	}
 
-	public void PermanentlyChangeCameraAngle () { 
+	public void PermanentlyChangeCameraAngle () {
 		if (offsetNow) {
 			float step = permanentOffsetCameraAngle * Time.deltaTime;
 			transform.RotateAround (glorbieBody.position, transform.right, step);
