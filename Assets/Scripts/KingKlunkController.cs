@@ -6,11 +6,11 @@ public class KingKlunkController : MonoBehaviour {
 
 	public GameObject spikeBullet;
 	private float reloadTime = 0.25f;
+	public bool firingEnabled;
 
 	// Use this for initialization
 	void Start () {
-
-		StartCoroutine(ShootBurst());
+		firingEnabled = true;
 	}
 
 	public IEnumerator ShootBurst() {
@@ -20,8 +20,8 @@ public class KingKlunkController : MonoBehaviour {
 		yield return new WaitForSecondsRealtime(reloadTime);
 		fireProjectile(20f);
 		yield return new WaitForSecondsRealtime(3.0f);
-
-		StartCoroutine(ShootBurst());
+		if (firingEnabled)
+			StartCoroutine(ShootBurst());
 	}
 
 	void fireProjectile(float offsetAngle) {
@@ -29,5 +29,9 @@ public class KingKlunkController : MonoBehaviour {
 		Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 		GameObject b = Instantiate(spikeBullet, bulletPosition, rotation);
 		b.GetComponent<Rigidbody>().velocity = b.transform.forward * 25;
+	}
+
+	public void beginFiring(){
+		StartCoroutine(ShootBurst());
 	}
 }

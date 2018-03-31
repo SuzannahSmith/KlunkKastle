@@ -64,10 +64,12 @@
      <Compile Include="Assets\Scripts\Glorbie Controls\HeadPositionController.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
      <Compile Include="Assets\Scripts\KingKlunkController.cs" />
+     <Compile Include="Assets\Scripts\KingKlunkTriggerController.cs" />
      <Compile Include="Assets\Scripts\KlunkController.cs" />
      <Compile Include="Assets\Scripts\KlunkTriggerController.cs" />
      <Compile Include="Assets\Scripts\LookAtObject.cs" />
      <Compile Include="Assets\Scripts\SpikeBulletController.cs" />
+     <None Include="Assets\Fontdiner_Swanky\LICENSE.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/opt/fcs/local/software/unity/unity-editor-2017.2.0xb6Linux/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>

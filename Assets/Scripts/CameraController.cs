@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
 
 	private float verticalAngle;
 	private float horizontalAngle;
-	private float turnSpeed = 8f;
+	private float turnSpeed = 20f;
 
 	private static float permanentOffsetCameraAngle;
 	private static float offsetToGo;
