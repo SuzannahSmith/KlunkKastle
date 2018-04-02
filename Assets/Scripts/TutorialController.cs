@@ -4,26 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
+public class TutorialController : MonoBehaviour {
 
 	public enum GameState {PLAY, LOSING, LOST, WINNING};
-	public static int currentLevel = 0;
-	public static int numLosses = 0;
 	public static string[] levelNames = {"Level1", "Level2", "Level3", "Level4"};
 
 	public static GameState gameState = GameState.PLAY;
-	public Text lvlText;
-	public Text numLossesText;
-	public static Text checkPointText;
-
 	public GameObject pauseMenuCanvas;
 	public GameObject loseGameMenuCanvas;
+	public static Text checkPointText;
+	public static Text tutorialText;
 
 	public static Transform checkPoint;
 	public string startingPointName = "StartingPoint";
 	public Transform glorbiePosition;
-
 	private static float checkPointTimestamp;
+	private static string[] tutorialTextTooltips;
 
 	void Awake(){
 		DontDestroyOnLoad(GameObject.Find(startingPointName));
@@ -31,26 +27,17 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		for(int i = 0; i < 4; i++) {
-			if (levelNames[i] == SceneManager.GetActiveScene().name) {
-				currentLevel = i;
-			}
-		}
-
-		checkPointText = GameObject.Find("CheckpointText").GetComponent<Text>();
-
-		lvlText.text = "Level: " + (currentLevel + 1);
-		updateNumLossesText();
-
 		if(checkPoint == null) {
 			checkPoint = GameObject.Find(startingPointName).transform;
 		}
-
+		checkPointText = GameObject.Find("CheckpointText").GetComponent<Text>();
+		tutorialText = GameObject.Find("TutorialText").GetComponent<Text>();
 		glorbiePosition.position = new Vector3(checkPoint.position.x, checkPoint.position.y, checkPoint.position.z);
-		// glorbiePosition.eulerAngles = new Vector3(checkPoint.eulerAngles.x, checkPoint.eulerAngles.y, checkPoint.eulerAngles.z);
+		tutorialTextTooltips = new string[]{"Welcome to Klunk Kastle! \n Use the W, A, S, and D keys to move. Press ESC at any time to pause.",
+																				"Left click and drag the mouse to rotate the camera.",
+																				"Reach the exit at the end of the hall to finish the tutorial, but watch out \n for the Klunk!"};
 	}
 
-	// Update is called once per frame
 	void Update () {
 
 		if (gameState == GameState.LOSING){
@@ -58,7 +45,7 @@ public class GameController : MonoBehaviour {
 		}
 
 		if(gameState == GameState.WINNING) {
-			winLevel();
+			LoadMainMenu();
 		}
 
 		if(Input.GetKeyUp(KeyCode.Escape)) {
@@ -86,38 +73,21 @@ public class GameController : MonoBehaviour {
 		gameState = GameState.WINNING;
 	}
 
-	void winLevel() {
-		currentLevel++;
-		Destroy (GameObject.Find(startingPointName));
-		gameState = GameState.PLAY;
-		SceneManager.LoadScene(levelNames[currentLevel]);
-	}
-
 	void loseGame(){
-		numLosses++;
-		updateNumLossesText();
 		loseGameMenuCanvas.SetActive(true);
 		gameState = GameState.LOST;
 	}
 
 	public void restartGame(){
 		Time.timeScale = 1.0f;
-		if (gameState == GameState.PLAY)
-			numLosses++;
 		gameState = GameState.PLAY;
-		updateNumLossesText();
-		SceneManager.LoadScene(levelNames[currentLevel]);
-	}
-
-	void updateNumLossesText() {
-		numLossesText.text = "Losses: " + numLosses;
+		SceneManager.LoadScene("Tutorial");
 	}
 
 	public static void setCheckpoint(Transform newCP) {
 		checkPoint.position = new Vector3(newCP.position.x, newCP.position.y, newCP.position.z);
 		checkPointText.text = "Checkpoint!";
 		checkPointTimestamp = Time.time;
-		// checkPoint.eulerAngles = new Vector3(newCP.eulerAngles.x, newCP.eulerAngles.y, newCP.eulerAngles.z);
 	}
 
 	public void TogglePauseGame() {
@@ -139,5 +109,9 @@ public class GameController : MonoBehaviour {
 
 	public void QuitGame() {
 		Application.Quit();
+	}
+
+	public static void setTutorialText(int index){
+		tutorialText.text = tutorialTextTooltips[index];
 	}
 }

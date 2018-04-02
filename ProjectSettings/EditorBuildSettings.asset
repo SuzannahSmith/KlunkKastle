@@ -5,8 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/GlorbiePlayground.unity
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 6b731e5959fc848159ef6eda5777c51f
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
     guid: 9e6d2ef2b268d4843973b116b734da2c
   - enabled: 1
     path: Assets/Scenes/Level1.unity
