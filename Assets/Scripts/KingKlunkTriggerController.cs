@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class KingKlunkTriggerController : MonoBehaviour {
 
+	public Light directionalLight;
 	public KingKlunkController kingKlunk;
+
 	public bool enablesKing;
 	public bool triggerActive = true;
+
+	void Start() {
+		directionalLight.enabled = false;
+	}
 
 	void OnTriggerEnter(Collider other){
 		if (triggerActive && enablesKing){
@@ -15,6 +21,7 @@ public class KingKlunkTriggerController : MonoBehaviour {
 		}
 		else if (enablesKing == false){
 				kingKlunk.firingEnabled = false;
+				directionalLight.enabled = true;
 		}
 	}
 }
