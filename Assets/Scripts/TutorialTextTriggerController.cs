@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TutorialTextTriggerController : MonoBehaviour {
 
-public int id;
-
+	public int id;
 
 	void OnTriggerEnter(Collider other){
 		TutorialController.setTutorialText(id);

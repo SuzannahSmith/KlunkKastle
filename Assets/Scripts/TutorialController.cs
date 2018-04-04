@@ -33,9 +33,9 @@ public class TutorialController : MonoBehaviour {
 		checkPointText = GameObject.Find("CheckpointText").GetComponent<Text>();
 		tutorialText = GameObject.Find("TutorialText").GetComponent<Text>();
 		glorbiePosition.position = new Vector3(checkPoint.position.x, checkPoint.position.y, checkPoint.position.z);
-		tutorialTextTooltips = new string[]{"Welcome to Klunk Kastle! \n Use the W, A, S, and D keys to move. Press ESC at any time to pause.",
+		tutorialTextTooltips = new string[]{"Welcome to Klunk Kastle! \nUse the W, A, S, and D keys to move. Press ESC at any time to pause.",
 																				"Left click and drag the mouse to rotate the camera.",
-																				"Reach the exit at the end of the hall to finish the tutorial, but watch out \n for the Klunk!"};
+																				"Reach the exit at the end of the hall to finish the tutorial, but watch out for the Klunk!"};
 	}
 
 	void Update () {
