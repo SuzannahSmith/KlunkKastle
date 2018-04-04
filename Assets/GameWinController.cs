@@ -15,7 +15,7 @@ public class GameWinController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		Time.timeScale = 0.0f;
-
+		if(collider.gameObject.tag != "Obstacle")
+			GameController.gameState = GameController.GameState.WON_GAME;
 	}
 }

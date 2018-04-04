@@ -629,23 +629,23 @@ Prefab:
     - target: {fileID: 2300004, guid: 5dce952ab28474f85ac0c1d9c291d183, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1227d155d7ee344d59399bd9588efc3e, type: 2}
+      objectReference: {fileID: 2100000, guid: f5c7ab3a2ced54ae79e03a211abca211, type: 2}
     - target: {fileID: 2300006, guid: 5dce952ab28474f85ac0c1d9c291d183, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1227d155d7ee344d59399bd9588efc3e, type: 2}
+      objectReference: {fileID: 2100000, guid: f5c7ab3a2ced54ae79e03a211abca211, type: 2}
     - target: {fileID: 2300010, guid: 5dce952ab28474f85ac0c1d9c291d183, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1227d155d7ee344d59399bd9588efc3e, type: 2}
+      objectReference: {fileID: 2100000, guid: f5c7ab3a2ced54ae79e03a211abca211, type: 2}
     - target: {fileID: 2300012, guid: 5dce952ab28474f85ac0c1d9c291d183, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1227d155d7ee344d59399bd9588efc3e, type: 2}
+      objectReference: {fileID: 2100000, guid: f5c7ab3a2ced54ae79e03a211abca211, type: 2}
     - target: {fileID: 2300008, guid: 5dce952ab28474f85ac0c1d9c291d183, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1227d155d7ee344d59399bd9588efc3e, type: 2}
+      objectReference: {fileID: 2100000, guid: f5c7ab3a2ced54ae79e03a211abca211, type: 2}
     - target: {fileID: 9500000, guid: 5dce952ab28474f85ac0c1d9c291d183, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2924,7 +2924,7 @@ GameObject:
   - component: {fileID: 1871131263}
   - component: {fileID: 1871131262}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

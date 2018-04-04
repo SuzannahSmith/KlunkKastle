@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-	public enum GameState {PLAY, LOSING, LOST, WINNING};
+	public enum GameState {PLAY, LOSING, LOST, WINNING, WON_GAME, };
 	public static int currentLevel = 0;
 	public static int numLosses = 0;
 	public static string[] levelNames = {"Level1", "Level2", "Level3", "Level4"};
@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject pauseMenuCanvas;
 	public GameObject loseGameMenuCanvas;
+	private GameObject winGameCanvas;
 
 	public static Transform checkPoint;
 	public string startingPointName = "StartingPoint";
@@ -37,17 +38,20 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
-		checkPointText = GameObject.Find("CheckpointText").GetComponent<Text>();
-
 		lvlText.text = "Level: " + (currentLevel + 1);
 		updateNumLossesText();
 
+		checkPointText = GameObject.Find("CheckpointText").GetComponent<Text>();
 		if(checkPoint == null) {
 			checkPoint = GameObject.Find(startingPointName).transform;
 		}
-
 		glorbiePosition.position = new Vector3(checkPoint.position.x, checkPoint.position.y, checkPoint.position.z);
 		// glorbiePosition.eulerAngles = new Vector3(checkPoint.eulerAngles.x, checkPoint.eulerAngles.y, checkPoint.eulerAngles.z);
+
+		winGameCanvas = GameObject.Find("WinGameCanvas");
+		if(winGameCanvas != null) {
+			winGameCanvas.GetComponent<Canvas>().enabled = false;
+		}
 	}
 
 	// Update is called once per frame
@@ -56,14 +60,17 @@ public class GameController : MonoBehaviour {
 		if (gameState == GameState.LOSING){
 			loseGame();
 		}
-
-		if(gameState == GameState.WINNING) {
+		else if(gameState == GameState.WINNING) {
 			winLevel();
+		}
+		else if(gameState == GameState.WON_GAME) {
+			winGame();
 		}
 
 		if(Input.GetKeyUp(KeyCode.Escape)) {
 			TogglePauseGame();
 		}
+
 
 		if (checkPointText.text == "Checkpoint!"){
 			if (Time.time - checkPointTimestamp > 3.0f){
@@ -91,6 +98,13 @@ public class GameController : MonoBehaviour {
 		Destroy (GameObject.Find(startingPointName));
 		gameState = GameState.PLAY;
 		SceneManager.LoadScene(levelNames[currentLevel]);
+	}
+
+	void winGame() {
+		//set winning text visible
+		//Show button to go to main menu
+		Time.timeScale = 0f;
+		winGameCanvas.GetComponent<Canvas>().enabled = true;
 	}
 
 	void loseGame(){
@@ -135,6 +149,7 @@ public class GameController : MonoBehaviour {
 		Time.timeScale = 1.0f;
 		Destroy (GameObject.Find(startingPointName));
 		SceneManager.LoadScene("MainMenu");
+		gameState = GameState.PLAY;
 	}
 
 	public void QuitGame() {

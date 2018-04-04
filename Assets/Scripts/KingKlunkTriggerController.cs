@@ -15,13 +15,15 @@ public class KingKlunkTriggerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (triggerActive && enablesKing){
-			kingKlunk.beginFiring();
-			triggerActive = false;
-		}
-		else if (enablesKing == false){
-				kingKlunk.firingEnabled = false;
-				directionalLight.enabled = true;
+		if(other.gameObject.tag != "Obstacle") {
+			if (triggerActive && enablesKing){
+				kingKlunk.beginFiring();
+				triggerActive = false;
+			}
+			else if (enablesKing == false){
+					kingKlunk.firingEnabled = false;
+					directionalLight.enabled = true;
+			}
 		}
 	}
 }
