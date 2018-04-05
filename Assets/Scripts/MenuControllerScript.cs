@@ -18,9 +18,11 @@ public class MenuControllerScript : MonoBehaviour {
 
 	}
 
-	// public void NewGame() {
-	// 	SelectLevel(0);
-	// }
+	public void NewGame() {
+		GameController.currentLevel = 0;
+		GameController.numLosses = 0;
+	 	SceneManager.LoadScene("Story");
+	 }
 
 	public void QuitGame() {
 		Application.Quit();
@@ -34,6 +36,7 @@ public class MenuControllerScript : MonoBehaviour {
 	public void SelectLevel(int lvl) {
 		GameController.currentLevel = lvl;
 		GameController.numLosses = 0;
+		GameController.gameState = GameController.GameState.STARTING_LEVEL;
 		SceneManager.LoadScene(GameController.levelNames[lvl]);
 	}
 

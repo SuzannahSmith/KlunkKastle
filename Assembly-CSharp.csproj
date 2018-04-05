@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\MenuControllerScript.cs" />
      <Compile Include="Assets\Scripts\PauseMenuController.cs" />
      <Compile Include="Assets\Scripts\SpikeBulletController.cs" />
+     <Compile Include="Assets\Scripts\StoryTextController.cs" />
      <Compile Include="Assets\Scripts\TutorialController.cs" />
      <Compile Include="Assets\Scripts\TutorialTextTriggerController.cs" />
      <None Include="Assets\Fontdiner_Swanky\LICENSE.txt" />

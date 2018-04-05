@@ -361,7 +361,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 204884109}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 32.21}
+  m_LocalPosition: {x: 0, y: -1.73, z: 32.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3495,6 +3495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlText: {fileID: 978098840}
   numLossesText: {fileID: 1640421525}
+  storyPanel: {fileID: 2115458654}
   pauseMenuCanvas: {fileID: 1084488949}
   loseGameMenuCanvas: {fileID: 1640006458}
   startingPointName: StartingPoint
@@ -4557,7 +4558,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4594089628742224, guid: 807c540a78acf4050bd839456dd10edb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -14.08
+      value: -14.94
       objectReference: {fileID: 0}
     - target: {fileID: 4594089628742224, guid: 807c540a78acf4050bd839456dd10edb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4796,3 +4797,8 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 978871fa6becb4eb49de9adc4f696ad1, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2115458654 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1230643792403788, guid: 978871fa6becb4eb49de9adc4f696ad1,
+    type: 2}
+  m_PrefabInternal: {fileID: 2115458653}

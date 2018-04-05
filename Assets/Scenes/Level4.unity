@@ -1919,69 +1919,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224361539605842608, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 223291468493417144, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224802559286526762, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224802559286526762, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224802559286526762, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -33
-      objectReference: {fileID: 0}
-    - target: {fileID: 224802559286526762, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 257.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224351420949953214, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224351420949953214, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224351420949953214, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -104
-      objectReference: {fileID: 0}
-    - target: {fileID: 224900148964049050, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224900148964049050, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224900148964049050, guid: 978871fa6becb4eb49de9adc4f696ad1,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 104.100006
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 978871fa6becb4eb49de9adc4f696ad1, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &527105224 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1230643792403788, guid: 978871fa6becb4eb49de9adc4f696ad1,
+    type: 2}
+  m_PrefabInternal: {fileID: 527105223}
 --- !u!1 &536329350
 GameObject:
   m_ObjectHideFlags: 0
@@ -5823,7 +5768,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1330117058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 387, y: 290.5, z: 0}
+  m_LocalPosition: {x: 388.5, y: 291.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 903884502}
@@ -6086,7 +6031,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1407374696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.09, y: 5.89, z: -11.52}
+  m_LocalPosition: {x: 19.09, y: 5.02, z: -11.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8683,6 +8628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlText: {fileID: 2006725158}
   numLossesText: {fileID: 1987142494}
+  storyPanel: {fileID: 527105224}
   pauseMenuCanvas: {fileID: 1993637054}
   loseGameMenuCanvas: {fileID: 969105264}
   startingPointName: StartingPoint

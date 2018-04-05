@@ -1453,6 +1453,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 603739757}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &603739760 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1230643792403788, guid: 978871fa6becb4eb49de9adc4f696ad1,
+    type: 2}
+  m_PrefabInternal: {fileID: 603739757}
 --- !u!1001 &622173402
 Prefab:
   m_ObjectHideFlags: 0
@@ -3387,6 +3392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlText: {fileID: 603739759}
   numLossesText: {fileID: 603739758}
+  storyPanel: {fileID: 603739760}
   pauseMenuCanvas: {fileID: 1737946813}
   loseGameMenuCanvas: {fileID: 519472437}
   startingPointName: StartingPoint
