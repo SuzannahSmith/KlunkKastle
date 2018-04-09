@@ -2696,7 +2696,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114389401612748966, guid: 74791fb7d68504c6dbc5fc44248f2ac2,
+    - target: {fileID: 114168301280615332, guid: 74791fb7d68504c6dbc5fc44248f2ac2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2706,29 +2706,13 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1968329057}
-    - target: {fileID: 114168301280615332, guid: 74791fb7d68504c6dbc5fc44248f2ac2,
+    - target: {fileID: 114389401612748966, guid: 74791fb7d68504c6dbc5fc44248f2ac2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1968329057}
-    - target: {fileID: 114168301280615332, guid: 74791fb7d68504c6dbc5fc44248f2ac2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: restartGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 114944137437413324, guid: 74791fb7d68504c6dbc5fc44248f2ac2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 114389401612748966, guid: 74791fb7d68504c6dbc5fc44248f2ac2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 223307182321260834, guid: 74791fb7d68504c6dbc5fc44248f2ac2,
-        type: 2}
-      propertyPath: m_SortingOrder
+    - target: {fileID: 1548243851665252, guid: 74791fb7d68504c6dbc5fc44248f2ac2, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5768,7 +5752,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1330117058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 388.5, y: 291.5, z: 0}
+  m_LocalPosition: {x: 447.5, y: 279.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 903884502}

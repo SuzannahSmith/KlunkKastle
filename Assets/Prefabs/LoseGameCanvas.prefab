@@ -217,7 +217,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Lose!
+  m_Text: You Died!
 --- !u!114 &114150325386058270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -465,7 +465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Lose!
+  m_Text: You Died!
 --- !u!114 &114601905177617260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -886,16 +886,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1300994432223300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.399994, y: -3.2999954, z: 0}
+  m_LocalPosition: {x: -0.20865631, y: 0.02110672, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224780434832752784}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.4, y: -3.3}
-  m_SizeDelta: {x: -418.2, y: -250.7}
+  m_AnchorMin: {x: 0.2892961, y: 0.25084436}
+  m_AnchorMax: {x: 0.7265308, y: 0.7355779}
+  m_AnchoredPosition: {x: -1, y: 0.69999695}
+  m_SizeDelta: {x: 85.79999, y: 37.300003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224952901625075074
 RectTransform:
